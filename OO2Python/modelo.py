@@ -38,11 +38,21 @@ class Serie(Programa):
     def __str__(self):
         return f"Nome: {self._nome} - Ano: {self.ano} - Temporadas: {self.temporadas} - Likes: {self._likes}"
 
-class Playlist(list):
+class Playlist:
     def __init__(self, nome, programas):
         self.nome = nome
-        super().__init__(programas)
+        self._programas = programas
 
+    @property
+    def listagem(self):
+        return self._programas
+
+    @property
+    def tamanho(self):
+        return len(self._programas)
+
+    def __getitem__(self, item):
+        return self._programas[item]
 
 
 marvel = Filme("vingadores - fim do jogo", 2018, 160)
@@ -64,6 +74,6 @@ aneis.dar_like()
 filmes_e_series = [marvel, miranha, serie, aneis]
 playlist_fim_de_semana = Playlist('fim de semana', filmes_e_series)
 
-print(f'Tamanho da playlist: {len(playlist_fim_de_semana)}')
+print(f'Tamanho da playlist: {playlist_fim_de_semana.tamanho}')
 for programa in playlist_fim_de_semana:
     print(programa)
