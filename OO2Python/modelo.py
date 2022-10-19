@@ -38,16 +38,32 @@ class Serie(Programa):
     def __str__(self):
         return f"Nome: {self._nome} - Ano: {self.ano} - Temporadas: {self.temporadas} - Likes: {self._likes}"
 
-marvel = Filme("vingadores - guerra", 2018, 160)
+class Playlist(list):
+    def __init__(self, nome, programas):
+        self.nome = nome
+        super().__init__(programas)
+
+
+
+marvel = Filme("vingadores - fim do jogo", 2018, 160)
 marvel.dar_like()
 marvel.dar_like()
 marvel.dar_like()
-print(marvel)
+miranha = Filme("Homem aranha - sem volta pra casa", 2022, 180)
+miranha.dar_like()
 
 
 serie = Serie("Rick and Morty", 2013, 6)
 serie.dar_like()
 serie.dar_like()
 serie.dar_like()
-serie.dar_like()
-print(serie)
+aneis = Serie("Senhor dos anéis - os Anéis do poder", 2022, 1)
+aneis.dar_like()
+aneis.dar_like()
+
+filmes_e_series = [marvel, miranha, serie, aneis]
+playlist_fim_de_semana = Playlist('fim de semana', filmes_e_series)
+
+print(f'Tamanho da playlist: {len(playlist_fim_de_semana)}')
+for programa in playlist_fim_de_semana:
+    print(programa)
