@@ -7,12 +7,12 @@ class BaseRepository:
 
     def create_table(self, table: str, columns: str):
         sql = f"CREATE TABLE IF NOT EXISTS {table}({columns})"
-        self.__context.execute(sql, None)
+        self.__context.cursor.execute(sql)
 
-    def insert(self, sql: str, **kwargs):
-        result = self.__context.execute(sql, **kwargs)
-        print(result)
-        self.__context.commit()
+    def insert(self, sql: str, *args):
+        print(args)
+        result = self.__context.cursor.execute(sql, *args)
+        print(result.fetchone())
 
     def query(self, sql):
-        return self.__context.execute(sql)
+        return self.__context.cursor.execute(sql)

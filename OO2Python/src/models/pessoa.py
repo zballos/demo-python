@@ -12,8 +12,8 @@ class Pessoa:
         return self.__nome
 
     @property
-    def data_nascimento(self):
-        return self.__data_nascimento
+    def data_nascimento(self) -> str:
+        return self.__data_nascimento.strftime("%d/%m/%Y")
 
     @property
     def id(self):
