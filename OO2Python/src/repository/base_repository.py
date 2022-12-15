@@ -10,9 +10,7 @@ class BaseRepository:
         self.__context.cursor.execute(sql)
 
     def insert(self, sql: str, *args):
-        print(args)
-        result = self.__context.cursor.execute(sql, *args)
-        print(result.fetchone())
+        self.__context.cursor.execute(sql, *args)
 
     def query(self, sql):
         return self.__context.cursor.execute(sql)
