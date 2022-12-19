@@ -23,16 +23,3 @@ class PessoaRepository(BaseRepository):
     @staticmethod
     def __sql_insert():
         return "INSERT INTO pessoa(nome, data_nascimento) VALUES (?, ?)"
-
-from datetime import datetime
-p1 = Pessoa("Zballos", datetime.strptime("10/10/2010", "%d/%m/%Y"))
-p2 = Pessoa("Jon", datetime.strptime("10/11/2012", "%d/%m/%Y"))
-p3 = Pessoa("MMa", datetime.strptime("12/12/2010", "%d/%m/%Y"))
-
-repo = PessoaRepository()
-repo.add(p1)
-repo.add(p2)
-repo.add(p3)
-
-r = repo.get_all()
-print(r.fetchall())
